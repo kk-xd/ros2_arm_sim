@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<robot name="simple_arm">
+
+  <!-- ==================== 1. 定义连杆 (木头) ==================== -->
+  <!-- 底座（基座） -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.1" radius="0.1"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 1"/> <!-- 蓝色 -->
+      </material>
+    </visual>
+  </link>
+
+  <!-- 大臂 -->
+  <link name="link_1">
+    <visual>
+      <origin xyz="0 0 0.25" rpy="0 0 0"/> <!-- 让圆柱体的中心往上挪一点 -->
+      <geometry>
+        <cylinder length="0.5" radius="0.05"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1 0 0 1"/> <!-- 红色 -->
+      </material>
+    </visual>
+  </link>
+
+  <!-- 小臂 -->
+  <link name="link_2">
+    <visual>
+      <origin xyz="0 0 0.15" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.3" radius="0.04"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0 1 0 1"/> <!-- 绿色 -->
+      </material>
+    </visual>
+  </link>
+
+
+  <!-- ==================== 2. 定义关节 (枢纽) ==================== -->
+  <!-- 关节1：连接底座和大臂，绕Z轴旋转 -->
+  <joint name="joint_1" type="revolute">
+    <parent link="base_link"/>
+    <child link="link_1"/>
+    <origin xyz="0 0 0.05" rpy="0 0 0"/> <!-- 相对底座的位置 -->
+    <axis xyz="0 0 1"/> <!-- 绕Z轴转 -->
+    <limit lower="-3.14" upper="3.14" effort="10.0" velocity="1.0"/>
+  </joint>
+
+  <!-- 关节2：连接大臂和小臂，绕Y轴旋转 -->
+  <joint name="joint_2" type="revolute">
+    <parent link="link_1"/>
+    <child link="link_2"/>
+    <origin xyz="0 0 0.5" rpy="0 0 0"/> <!-- 在大臂顶端 -->
+    <axis xyz="0 1 0"/> <!-- 绕Y轴转，这里假设大臂和小臂是弯折的 -->
+    <limit lower="-3.14" upper="3.14" effort="10.0" velocity="1.0"/>
+  </joint>
+
+</robot>
