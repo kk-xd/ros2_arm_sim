@@ -12,7 +12,7 @@
 # 基于ROS2与UR5的机械臂控制仿真
 
 ##  项目简介
-基于 Ubuntu 22.04 与 ROS2 Humble，使用 C++ 独立开发的六轴工业机械臂（UR5）关节空间平滑控制仿真系统。实现了底层话题通信、P控制算法到RViz可视化的完整闭环。
+基于 Ubuntu 22.04 与 ROS2 Humble，使用 C++ 开发的六轴工业机械臂（UR5）关节空间平滑控制仿真系统。从底层话题通信、P控制算法到RViz可视化。
 
 ## 技术栈
 C++ / Linux (Ubuntu 22.04) / ROS2 Humble / CMake / URDF / RViz2
