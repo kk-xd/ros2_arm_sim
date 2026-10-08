@@ -19,7 +19,7 @@ C++ / Linux (Ubuntu 22.04) / ROS2 Humble / CMake / URDF / RViz2
 
 ## 核心功能
 1. 使用C++编写发布者与订阅者节点，通过 `/joint_command` 与 `/joint_states` 话题进行控制。
-2. 在订阅者节点中引入P控制（Kp=0.1），实现关节平滑逼近目标，避免运动冲击。
+2. 在订阅者节点中实现一阶指数平滑，实现关节平滑逼近目标，避免运动冲击。
 3. 集成UR5工业URDF模型，通过 `robot_state_publisher` 发布TF坐标变换并在RViz中可视化。
 4. 使用CMake构建工程，Launch文件实现一键启动，解决QoS等工程问题。
 
